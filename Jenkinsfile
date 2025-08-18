@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Print Hello World') {
+        stage('Print Hello World - edited') {
             steps {
-                sleep 5
+                sleep 11
                 echo 'Hello World'
             }
         }
@@ -16,9 +16,9 @@ pipeline {
                     }
                 }
 
-        stage('New stage - 2') {
+        stage('Edited stage - 2') {
                     steps {
-                        sleep 15
+                        sleep 7
                         echo 'Hello World 2'
                     }
                 }
