@@ -27,10 +27,7 @@ pipeline {
                                     steps {
                                         sleep 30
                                         echo 'Hello World 4'
-                                        script {
-                                                            currentBuild.result = 'UNSTABLE'  // This will set the build status to unstable
-                                                            echo 'This build is marked as unstable.'
-                                                        }
+                                       
                                     }
                                 }
         
@@ -39,7 +36,10 @@ pipeline {
                                     steps {
                                         sleep 20
                                         echo 'Hello World 5'
-                                        error 'Force failure at the end of stage 5'
+                                         script {
+                                                            currentBuild.result = 'UNSTABLE'  // This will set the build status to unstable
+                                                            echo 'This build is marked as unstable.'
+                                                        }
                                     }
                                 }
     }
