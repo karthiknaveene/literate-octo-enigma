@@ -4,21 +4,21 @@ pipeline {
     stages {
         stage('Print Hello World - edited') {
             steps {
-                sleep 11
+                sleep 8
                 echo 'Hello World'
             }
         }
 
         stage('Edited stage - 2') {
                     steps {
-                        sleep 7
+                        sleep 15
                         echo 'Hello World 2'
                     }
                 }
 
          stage('New stage - 3') {
                             steps {
-                                sleep 3
+                                sleep 25
                                 echo 'Hello World 3'
                             }
                         }
