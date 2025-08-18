@@ -9,13 +9,6 @@ pipeline {
             }
         }
 
-        stage('New stage - 1') {
-                    steps {
-                        sleep 10
-                        echo 'Hello World 1'
-                    }
-                }
-
         stage('Edited stage - 2') {
                     steps {
                         sleep 7
