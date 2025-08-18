@@ -37,7 +37,7 @@ pipeline {
                                         sleep 20
                                         echo 'Hello World 5'
                                          script {
-                                                            currentBuild.result = 'UNSTABLE'  // This will set the build status to unstable
+                                                            currentBuild.result = 'ABORTED'   // This will set the build status to unstable
                                                             echo 'This build is marked as unstable.'
                                                         }
                                     }
