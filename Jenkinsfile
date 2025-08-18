@@ -22,5 +22,20 @@ pipeline {
                                 echo 'Hello World 3'
                             }
                         }
+
+        stage('New stage - 4') {
+                                    steps {
+                                        sleep 30
+                                        echo 'Hello World 4'
+                                    }
+                                }
+
+        stage('New stage - 5') {
+                                    steps {
+                                        sleep 20
+                                        echo 'Hello World 5'
+                                        error 'Force failure at the end of stage 5'
+                                    }
+                                }
     }
 }
