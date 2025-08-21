@@ -2,45 +2,52 @@ pipeline {
     agent any
 
     stages {
-        stage('Print Hello World - edited') {
-            steps {
-                sleep 8
-                echo 'Hello World'
+        stage('Build') {
+            stages {
+                stage('Compile') {
+                    steps {
+                        echo 'Compiling...'
+                        sleep 10
+                    }
+                }
+                stage('Package') {
+                    steps {
+                        echo 'Packaging...'
+                        sleep 5
+                    }
+                }
             }
         }
 
-        stage('Edited stage - 2') {
-                    steps {
-                        sleep 15
-                        echo 'Hello World 2'
-                    }
-                }
+        stage('Registering build artifact') {
+            steps {
+                echo 'Registering the metadata'
+                echo 'Another echo to make the pipeline a bit more complex'
+                registerBuildArtifactMetadata(
+                    name: "test-artifact",
+                    version: "1.0.0",
+                    type: "docker",
+                    url: "http://localhost:1111",
+                    digest: "6f637064707039346163663237383938",
+                    label: "qa"
+                )
+            }
+        }
 
-         stage('New stage - 3') {
-                            steps {
-                                sleep 25
-                                echo 'Hello World 3'
-                            }
-                        }
+        stage('Test') {
+            steps {
+                echo 'Running Unit Tests...'
+                sleep 10
+                echo 'Running Integration Tests...'
+                sleep 5
+            }
+        }
 
-        stage('New stage - 4') {
-                                    steps {
-                                        sleep 30
-                                        echo 'Hello World 4'
-                                       
-                                    }
-                                }
-        
-
-        stage('New stage - 5') {
-                                    steps {
-                                        sleep 20
-                                        echo 'Hello World 5'
-                                         script {
-                                                            currentBuild.result = 'UNSTABLE'   // This will set the build status to unstable
-                                                            echo 'This build is marked as unstable.'
-                                                        }
-                                    }
-                                }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+                sleep 5
+            }
+        }
     }
 }
